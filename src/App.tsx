@@ -25,7 +25,9 @@ const App = () => {
   const [shouldFetchBlogs, setShouldFetchBlogs] = useState(true); // Track if blogs need to be fetched
 
   const fetchAllBlogs = async () => {
-    const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+    const apiUrl =
+      import.meta.env.VITE_REACT_APP_API_URL ||
+      "https://blog-task-backend.vercel.app";
     try {
       const { data: res } = await axios.get(`${apiUrl}/blogs`);
       if (JSON.stringify(blogs) !== JSON.stringify(res.blogs)) {
